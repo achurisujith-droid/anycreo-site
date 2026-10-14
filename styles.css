@@ -204,11 +204,12 @@ h3 { font-size: 1.08rem; font-weight: 600; letter-spacing: -0.01em; line-height:
 .site__cta { padding: 6px 14px; border-radius: 999px; background: #4b2a7a; color: #fff; font-weight: 600; }
 .site__grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; padding: 20px 22px; }
 .site__h { font-weight: 700; font-size: .95rem; margin-bottom: 10px; color: #1d1b26; }
-.slot { display: grid; grid-template-columns: 54px 1fr auto; align-items: center; gap: 10px; padding: 11px 12px; margin-bottom: 8px; border-radius: 10px; background: #f6f3fb; border-left: 3px solid #8a63c7; }
+.slot { --dot: #8a63c7; display: grid; grid-template-columns: 54px 1fr auto; align-items: center; gap: 10px; padding: 11px 12px; margin-bottom: 8px; border-radius: 10px; background: #f6f3fb; }
+.slot em::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--dot); vertical-align: 1px; }
 .slot b { font-variant-numeric: tabular-nums; }
 .slot em { font-style: normal; color: #6b6878; font-size: .8rem; }
-.slot--alt { background: #fbf3ee; border-left-color: #d98a5c; }
-.slot--new { background: #eaf6ef; border-left-color: #2f8f5b; }
+.slot--alt { --dot: #d98a5c; background: #fbf3ee; }
+.slot--new { --dot: #2f8f5b; background: #eaf6ef; }
 .slot--new em { color: #23744a; font-weight: 600; }
 .book { padding: 16px; border-radius: 12px; border: 1px solid #ebe7f3; background: #fcfbfe; }
 .book__days, .book__times { display: flex; gap: 6px; margin-bottom: 10px; }

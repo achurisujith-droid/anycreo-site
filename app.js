@@ -41,9 +41,30 @@
       void amt.offsetWidth;
       amt.classList.add('is-swapping');
     });
-    document.querySelectorAll('.price__alt[data-month]').forEach((p) => { p.textContent = p.dataset[period]; });
+    document.querySelectorAll('[data-swap]').forEach((el) => {
+      const [amount, ...rest] = el.dataset[period].split(' in ');
+      el.innerHTML = el.classList.contains('price__alt') ? el.dataset[period]
+        : `<strong>${amount} in ${rest.join(' in ').replace(/ (every month|for the year)$/, '')}</strong> ${el.dataset[period].match(/(every month|for the year)$/)[0]}`;
+    });
   };
   periodButtons.forEach((b) => b.addEventListener('click', () => setPeriod(b.dataset.period)));
+
+  // Components and modules: tabs + category filter.
+  const libTabs = [...document.querySelectorAll('.library__tabs [role="tab"]')];
+  libTabs.forEach((tab) => tab.addEventListener('click', () => {
+    libTabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }));
+  const filters = [...document.querySelectorAll('.filters button')];
+  filters.forEach((f) => f.addEventListener('click', () => {
+    filters.forEach((b) => b.setAttribute('aria-pressed', String(b === f)));
+    document.querySelectorAll('.comp').forEach((c) => {
+      c.hidden = f.dataset.filter !== 'All' && c.dataset.cat !== f.dataset.filter;
+    });
+  }));
 
   // Scroll reveal.
   const items = document.querySelectorAll('.reveal');

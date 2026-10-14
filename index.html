@@ -16,8 +16,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="app.js"></script>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <script defer src="app.js?v=3"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -32,6 +32,7 @@
         <ul class="nav__links">
           <li><a href="#how">How it works</a></li>
           <li><a href="#included">What you get</a></li>
+          <li><a href="#components">Components</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#faq">Questions</a></li>
         </ul>
@@ -140,7 +141,7 @@
         <h2 class="h2">Other builders charge you every time the AI tries. When it gets things wrong, you pay again.</h2>
         <div class="diff__points">
           <div>
-            <h3>No credits, ever</h3>
+            <h3>Never charged for AI</h3>
             <p>Anycreo uses your own Claude, ChatGPT or Google plan. A failed attempt costs you nothing extra.</p>
           </div>
           <div>
@@ -196,7 +197,7 @@
     <section class="included" id="included">
       <div class="wrap">
         <h2 class="h2 reveal">The hard parts come ready-made.</h2>
-        <p class="sub reveal">Sign-in, payments and file uploads are where home-made apps leak data. Anycreo installs tested versions instead of writing them from scratch.</p>
+        <p class="sub reveal">Sign-in, payments and file uploads are where home-made apps leak data. Anycreo installs tested versions instead of writing them from scratch. They come with every paid plan, paid for with your credits.</p>
         <div class="bento">
           <article class="tile tile--wide tile--accent reveal">
             <h3>Sign-in that is already safe</h3>
@@ -237,11 +238,119 @@
       </div>
     </section>
 
+
+    <!-- Components and modules -->
+    <section class="library" id="components">
+      <div class="wrap">
+        <h2 class="h2 reveal">Components and modules.</h2>
+        <p class="sub reveal">Components are single parts, like payments. Modules are whole features made from several of them. Add either to your app with your credits, and they stay yours.</p>
+
+        <div class="library__tabs reveal" role="tablist" aria-label="Library">
+          <button role="tab" aria-selected="true" aria-controls="tab-components" id="t-components">Components <span>14</span></button>
+          <button role="tab" aria-selected="false" aria-controls="tab-modules" id="t-modules">Modules <span>3</span></button>
+        </div>
+
+        <div class="library__panel" id="tab-components" role="tabpanel" aria-labelledby="t-components">
+          <div class="filters" role="group" aria-label="Filter components"><button type="button" aria-pressed="true" data-filter="All">All</button><button type="button" aria-pressed="false" data-filter="People">People</button><button type="button" aria-pressed="false" data-filter="Money">Money</button><button type="button" aria-pressed="false" data-filter="Files">Files</button><button type="button" aria-pressed="false" data-filter="Messages">Messages</button><button type="button" aria-pressed="false" data-filter="Trust">Trust</button></div>
+          <ul class="comp-grid">
+            <li class="comp" data-cat="People">
+              <div><h3>Sign-in and accounts</h3><p>Email and password accounts, done safely.</p></div>
+              <span class="comp__cost">40 credits</span>
+            </li>
+            <li class="comp" data-cat="People">
+              <div><h3>Password reset</h3><p>The forgot-password email and link.</p></div>
+              <span class="comp__cost">25 credits</span>
+            </li>
+            <li class="comp" data-cat="People">
+              <div><h3>Roles and permissions</h3><p>Decide who can see and change what.</p></div>
+              <span class="comp__cost">35 credits</span>
+            </li>
+            <li class="comp" data-cat="People">
+              <div><h3>Teams and organisations</h3><p>Keep each customer's data separate.</p></div>
+              <span class="comp__cost">50 credits</span>
+            </li>
+            <li class="comp" data-cat="Money">
+              <div><h3>Subscription payments</h3><p>Monthly plans and invoices through Stripe.</p></div>
+              <span class="comp__cost">60 credits</span>
+            </li>
+            <li class="comp" data-cat="Messages">
+              <div><h3>Emails</h3><p>Receipts, invites and alerts that arrive.</p></div>
+              <span class="comp__cost">25 credits</span>
+            </li>
+            <li class="comp" data-cat="Files">
+              <div><h3>File storage</h3><p>Uploads that are private by default.</p></div>
+              <span class="comp__cost">30 credits</span>
+            </li>
+            <li class="comp" data-cat="Files">
+              <div><h3>Spreadsheet import</h3><p>Bring in a CSV with checks on every row.</p></div>
+              <span class="comp__cost">25 credits</span>
+            </li>
+            <li class="comp" data-cat="Files">
+              <div><h3>PDF creation</h3><p>Turn any page into a PDF.</p></div>
+              <span class="comp__cost">25 credits</span>
+            </li>
+            <li class="comp" data-cat="Files">
+              <div><h3>Read documents</h3><p>Pull the text out of PDFs and Word files.</p></div>
+              <span class="comp__cost">30 credits</span>
+            </li>
+            <li class="comp" data-cat="Trust">
+              <div><h3>Activity log</h3><p>A record of who changed what, and when.</p></div>
+              <span class="comp__cost">30 credits</span>
+            </li>
+            <li class="comp" data-cat="Trust">
+              <div><h3>Privacy export and delete</h3><p>Give people their data, or erase it.</p></div>
+              <span class="comp__cost">45 credits</span>
+            </li>
+            <li class="comp" data-cat="Trust">
+              <div><h3>Error alerts</h3><p>Know when something breaks in your live app.</p></div>
+              <span class="comp__cost">20 credits</span>
+            </li>
+            <li class="comp" data-cat="Trust">
+              <div><h3>Background jobs</h3><p>Slow work that runs without making people wait.</p></div>
+              <span class="comp__cost">35 credits</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="library__panel" id="tab-modules" role="tabpanel" aria-labelledby="t-modules" hidden>
+          <ul class="mod-grid">
+            <li class="mod">
+              <h3>Admin dashboard</h3>
+              <p>A finished back office: navigation, lists, and the numbers that matter.</p>
+              <span class="comp__cost">35 credits</span>
+            </li>
+            <li class="mod">
+              <h3>Review and approval</h3>
+              <p>Send items to a person to approve, reject or send back, with a full history.</p>
+              <span class="comp__cost">40 credits</span>
+            </li>
+            <li class="mod">
+              <h3>Sign-in screens</h3>
+              <p>Sign up, sign in and forgot-password pages that work with a keyboard and screen readers.</p>
+              <span class="comp__cost">25 credits</span>
+            </li>
+          </ul>
+          <div class="soon">
+            <h3>Coming next</h3>
+            <p>Not built yet. These are the modules we are working on, in roughly this order.</p>
+            <ul class="chips">
+              <li>Booking calendar</li><li>Invite teammates</li><li>Notifications</li><li>Discount codes</li><li>Two-step sign-in</li><li>Comments</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="base reveal">
+          <h3>Included with every paid plan, no credits needed</h3>
+          <p>The database, the design system and its ten looks, sortable tables, friendly empty screens, and the five starter screens every app begins with.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Pricing -->
     <section class="pricing" id="pricing">
       <div class="wrap">
         <div class="pricing__head reveal">
-          <h2 class="h2">Build for free. Pay when it goes online.</h2>
+          <h2 class="h2">Try it free. Every dollar you pay comes back as credits.</h2>
           <div class="toggle" role="radiogroup" aria-label="Billing period">
             <button role="radio" aria-checked="true" data-period="year">Yearly <span class="save">2 months free</span></button>
             <button role="radio" aria-checked="false" data-period="month">Monthly</button>
@@ -251,14 +360,14 @@
         <div class="plans">
           <article class="plan reveal">
             <h3>Free</h3>
-            <p class="plan__for">For building on your own computer.</p>
+            <p class="plan__for">For trying Anycreo on your idea.</p>
             <p class="price"><span class="amt">$0</span><span class="per">forever</span></p>
             <p class="price__alt">No card needed</p>
             <a class="btn btn--ghost btn--block" href="#download">Download free</a>
             <ul class="plan__list">
-              <li>Build as many apps as you like</li>
+              <li>The Anycreo editor, with limited use</li>
               <li>Uses your own Claude, ChatGPT or Google plan</li>
-              <li>Sign-in, payments and file uploads included</li>
+              <li class="plan__no">Ready-made components not included</li>
               <li>The launch-readiness check</li>
             </ul>
           </article>
@@ -267,10 +376,11 @@
             <h3>Starter</h3>
             <p class="plan__for">For showing your app to a few people.</p>
             <p class="price" data-month="$10" data-year="$99"><span class="amt">$99</span><span class="per">/ year</span></p>
-            <p class="price__alt" data-month="or $99 a year" data-year="or $10 a month">or $10 a month</p>
+            <p class="price__alt" data-swap data-month="or $99 a year" data-year="or $10 a month">or $10 a month</p>
             <a class="btn btn--ghost btn--block" href="mailto:hello@anycreo.com?subject=Anycreo%20Starter%20early%20access">Get early access</a>
             <ul class="plan__list">
-              <li>Everything in Free</li>
+              <li>Everything in Free, with no usage limit</li>
+              <li data-swap data-month="$10 in component credits every month" data-year="$99 in component credits for the year"><strong>$99 in component credits</strong> for the year</li>
               <li>1 app online with a private link</li>
               <li>Sleeps when nobody is using it</li>
               <li>Email support</li>
@@ -282,10 +392,11 @@
             <h3>Builder</h3>
             <p class="plan__for">For an app real people use every day.</p>
             <p class="price" data-month="$25" data-year="$250"><span class="amt">$250</span><span class="per">/ year</span></p>
-            <p class="price__alt" data-month="or $250 a year" data-year="or $25 a month">or $25 a month</p>
+            <p class="price__alt" data-swap data-month="or $250 a year" data-year="or $25 a month">or $25 a month</p>
             <a class="btn btn--primary btn--block" href="mailto:hello@anycreo.com?subject=Anycreo%20Builder%20early%20access">Get early access</a>
             <ul class="plan__list">
               <li>Everything in Starter</li>
+              <li data-swap data-month="$25 in component credits every month" data-year="$250 in component credits for the year"><strong>$250 in component credits</strong> for the year</li>
               <li>1 app always online</li>
               <li>Your own web address</li>
               <li><strong>Free domain included</strong> when you pay yearly</li>
@@ -298,10 +409,11 @@
             <h3>Pro</h3>
             <p class="plan__for">For running a small business on it.</p>
             <p class="price" data-month="$50" data-year="$500"><span class="amt">$500</span><span class="per">/ year</span></p>
-            <p class="price__alt" data-month="or $500 a year" data-year="or $50 a month">or $50 a month</p>
+            <p class="price__alt" data-swap data-month="or $500 a year" data-year="or $50 a month">or $50 a month</p>
             <a class="btn btn--ghost btn--block" href="mailto:hello@anycreo.com?subject=Anycreo%20Pro%20early%20access">Get early access</a>
             <ul class="plan__list">
               <li>Everything in Builder</li>
+              <li data-swap data-month="$50 in component credits every month" data-year="$500 in component credits for the year"><strong>$500 in component credits</strong> for the year</li>
               <li>Up to 3 apps online</li>
               <li><strong>Free domain included</strong> when you pay yearly</li>
               <li>Security review and report before launch</li>
@@ -327,8 +439,12 @@
             <p>A Windows computer and a paid plan with Claude, ChatGPT or Google's AI. Anycreo installs everything else and walks you through signing in.</p>
           </details>
           <details class="reveal">
-            <summary>Why is it free to build?</summary>
-            <p>The AI work runs on the plan you already pay for, so it costs us nothing to let you build. You only pay us when you want your app online for other people.</p>
+            <summary>What are component credits?</summary>
+            <p>Components are the ready-made parts of an app: sign-in, payments, file uploads and more. You add them with credits. One credit is worth one dollar. On every paid plan, each dollar you pay comes back as a dollar of credits, so the plan pays for itself in parts you would otherwise have to build.</p>
+          </details>
+          <details class="reveal">
+            <summary>What can I do on the free plan?</summary>
+            <p>Try Anycreo on your own idea with limited use. The free plan does not include the ready-made components. Upgrade when you want to keep building, and your payment comes back as credits.</p>
           </details>
           <details class="reveal">
             <summary>Who can see my idea?</summary>

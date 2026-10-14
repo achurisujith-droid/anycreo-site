@@ -367,6 +367,10 @@ h3 { font-size: 1.08rem; font-weight: 600; letter-spacing: -0.01em; line-height:
 .plan__list li.credit { font-weight: 600; color: var(--fg); }
 .plan__list li.no { color: var(--muted); }
 .plan__list li.no::before { width: 11px; height: 0; top: 11px; border-left: 0; border-bottom-color: var(--muted); transform: none; }
+.price { flex-wrap: wrap; row-gap: 4px; }
+.was { color: var(--muted); font-size: 1.15rem; font-weight: 500; margin-right: 2px; }
+.off { margin-left: auto; align-self: center; padding: 3px 9px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); font-size: .78rem; font-weight: 700; }
+[data-year-only][hidden] { display: none; }
 .amt.is-swapping { animation: swap .45s var(--ease); }
 @keyframes swap { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 

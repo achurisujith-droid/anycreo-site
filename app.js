@@ -46,11 +46,11 @@
     document.querySelectorAll('.price[data-month]').forEach((p) => {
       const amt = p.querySelector('.amt');
       amt.textContent = p.dataset[period];
-      p.querySelector('.per').textContent = period === 'year' ? '/ year' : '/ month';
       amt.classList.remove('is-swapping');
       void amt.offsetWidth;
       amt.classList.add('is-swapping');
     });
+    document.querySelectorAll('[data-year-only]').forEach((el) => { el.hidden = period !== 'year'; });
     document.querySelectorAll('[data-swap]').forEach((el) => { el.textContent = el.dataset[period]; });
   };
   periodButtons.forEach((b) => b.addEventListener('click', () => setPeriod(b.dataset.period)));

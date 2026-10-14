@@ -19,8 +19,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-  <link rel="stylesheet" href="styles.css?v=11">
-  <script defer src="app.js?v=11"></script>
+  <link rel="stylesheet" href="styles.css?v=12">
+  <script defer src="app.js?v=12"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -54,70 +54,23 @@
         <p class="lede">Turn your idea into a real app by describing it. Watch it work on your PC, then put it online in one click.</p>
         <div class="ctas">
           <a class="btn btn--primary btn--lg" href="#download"><i class="ph ph-windows-logo" aria-hidden="true"></i> Download free for Windows</a>
-          <a class="btn btn--ghost btn--lg" href="#how">See how it works</a>
+          <a class="btn btn--ghost btn--lg" href="demo/workspace.html"><i class="ph ph-play-circle" aria-hidden="true"></i> Try the live demo</a>
         </div>
       </div>
 
       <div class="wrap stage-wrap">
-        <figure class="stage" aria-label="Anycreo building a salon booking app: you ask for online booking, it adds it, then you publish it">
+        <figure class="stage">
           <div class="app">
             <div class="app__bar">
               <span class="app__name"><img src="favicon.svg" alt="" width="16" height="16"> Anycreo</span>
-              <span class="app__project">Bloom Hair Studio</span>
               <span class="app__win" aria-hidden="true"><i></i><i></i><i></i></span>
             </div>
-            <div class="app__body">
-              <aside class="chat">
-                <div class="chat__msgs">
-                  <p class="msg msg--you">Customers should be able to book online and pay a $10 deposit.</p>
-                  <p class="msg msg--ai s1">Good idea. I'll add a booking page and take the deposit with the ready-made payments part. This takes about a minute.</p>
-                  <div class="work s1">
-                    <p class="work__row done"><i class="ph ph-check" aria-hidden="true"></i> Booking page</p>
-                    <p class="work__row s2 done"><i class="ph ph-check" aria-hidden="true"></i> Deposits (payments part, tested)</p>
-                    <p class="work__row s2 done"><i class="ph ph-check" aria-hidden="true"></i> Checked: 38 of 38 passed</p>
-                  </div>
-                  <p class="msg msg--ai s2">Done. Try booking on the right. Ready to put it online?</p>
-                </div>
-                <div class="chat__input">
-                  <span>Describe what to change...</span>
-                  <i class="ph ph-arrow-up" aria-hidden="true"></i>
-                </div>
-              </aside>
-
-              <div class="preview">
-                <div class="preview__bar">
-                  <span class="live"><i></i> Your app, running on this PC</span>
-                  <span class="btn btn--primary btn--xs publish">Publish</span>
-                </div>
-                <div class="site">
-                  <header class="site__top">
-                    <strong>Bloom</strong>
-                    <span>Services</span><span>Stylists</span><span class="site__cta">Book now</span>
-                  </header>
-                  <div class="site__grid">
-                    <div class="site__day">
-                      <p class="site__h">Today, Thursday</p>
-                      <div class="slot"><b>09:30</b><span>Cut and finish</span><em>Maya</em></div>
-                      <div class="slot slot--alt"><b>11:00</b><span>Colour</span><em>Leo</em></div>
-                      <div class="slot"><b>13:15</b><span>Blow-dry</span><em>Maya</em></div>
-                      <div class="slot slot--new s2"><b>15:00</b><span>Cut and finish</span><em>New, paid</em></div>
-                    </div>
-                    <div class="book s1">
-                      <p class="site__h">Book online</p>
-                      <div class="book__days"><span>Thu</span><span class="on">Fri</span><span>Sat</span><span>Mon</span></div>
-                      <div class="book__times"><span>10:00</span><span class="on">15:00</span><span>16:30</span></div>
-                      <div class="book__pay"><i class="ph ph-credit-card" aria-hidden="true"></i> Deposit <b>$10</b></div>
-                      <span class="book__btn">Pay and book</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="toast s3" role="status">
-                  <i class="ph ph-check-circle" aria-hidden="true"></i>
-                  <div><strong>Your app is live</strong><span>bloomhairstudio.com</span></div>
-                </div>
-              </div>
-            </div>
+            <video class="stage__video" autoplay muted loop playsinline preload="auto" poster="img/demo-poster.webp" width="1280" height="800" aria-label="Anycreo building a dog grooming booking app: it writes a plan, builds each part while the preview fills in, finds and fixes a calendar problem, saves versions, and finishes with the app ready to try.">
+              <source src="img/demo-build.webm" type="video/webm">
+              <source src="img/demo-build.mp4" type="video/mp4">
+            </video>
           </div>
+          <figcaption>The Anycreo workspace building a sample booking app, shown at 2&times; speed. <a href="demo/workspace.html">Try it yourself</a></figcaption>
         </figure>
       </div>
     </section>

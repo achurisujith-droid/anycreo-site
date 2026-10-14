@@ -3,25 +3,17 @@
   document.documentElement.classList.add('js');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Hero: ask -> build -> done -> published, then loop.
-  const stage = document.querySelector('.stage');
-  if (stage) {
+  // Hero video: still for reduced motion, and paused while off screen.
+  const video = document.querySelector('.stage__video');
+  if (video) {
     if (reduce) {
-      stage.dataset.step = '3';
-    } else {
-      const durations = [1800, 2600, 2400, 3600];
-      let step = 0;
-      let timer = null;
-      const tick = () => {
-        stage.dataset.step = String(step);
-        timer = setTimeout(() => { step = (step + 1) % durations.length; tick(); }, durations[step]);
-      };
-      const io = new IntersectionObserver(([e]) => {
-        if (e.isIntersecting && !timer) tick();
-        if (!e.isIntersecting && timer) { clearTimeout(timer); timer = null; }
-      }, { threshold: 0.25 });
-      stage.dataset.step = '0';
-      io.observe(stage);
+      video.removeAttribute('autoplay');
+      video.pause();
+    } else if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      }, { threshold: 0.2 }).observe(video);
     }
   }
 

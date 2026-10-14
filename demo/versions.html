@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saved versions · Anycreo sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+<script src="assets/shared.js"></script>
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+<style>
+.wrap { max-width: 74rem; margin: 0 auto; padding: 2rem 1.5rem 6rem; display: flex; flex-wrap: wrap; gap: 2rem; }
+.list-col { flex: 1 1 24rem; min-width: 0; }
+.detail-col { flex: 1 1 30rem; min-width: 0; }
+.intro { margin: .5rem 0 1.25rem; color: var(--muted); max-width: 46ch; }
+.timeline { list-style: none; margin: 1rem 0 0; padding: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: .5625rem; top: .5rem; bottom: .5rem; width: 2px; background: var(--line); }
+.timeline li { position: relative; padding-left: 1.875rem; }
+.timeline .pin { position: absolute; left: .1875rem; top: 1.25rem; width: .875rem; height: .875rem; border-radius: 999px; background: var(--line-strong); border: 3px solid var(--bg); }
+.timeline li.current .pin { background: var(--ok); }
+.timeline li.picked .pin { background: var(--primary); }
+.ver { width: 100%; display: flex; gap: .875rem; align-items: flex-start; padding: .875rem; border: 1px solid transparent; border-radius: 14px; background: transparent; text-align: left; cursor: pointer; }
+.ver:hover { background: var(--surface); }
+li.picked .ver { background: var(--surface); border-color: var(--line); box-shadow: var(--shadow); }
+.thumb { width: 4.5rem; height: 3.25rem; border-radius: 8px; flex: none; border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column; gap: 3px; padding: 5px; }
+.thumb i { display: block; height: 5px; border-radius: 3px; }
+.ver strong { font-weight: 700; }
+.day { margin: 1.25rem 0 .25rem 1.875rem; font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.shot { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.shot-head { padding: .75rem 1rem; display: flex; justify-content: space-between; font-family: Georgia, serif; }
+.shot-body { padding: 1.25rem 1rem; display: flex; flex-direction: column; gap: .625rem; font-family: Georgia, serif; }
+.shot-body .t { font-size: 1.375rem; font-weight: 700; }
+.shot-body .bar { height: .625rem; border-radius: 999px; }
+.shot-body .cta { align-self: flex-start; padding: .5rem .875rem; border-radius: 8px; color: #fff; font-family: system-ui; font-size: .8125rem; font-weight: 700; }
+.name-input { font-size: 1.375rem; font-weight: var(--display-weight); letter-spacing: var(--display-track); flex: 1; min-width: 0; border: 1px solid transparent; border-radius: 8px; padding: .125rem .375rem; margin-left: -.375rem; background: transparent; }
+.name-input:hover { border-color: var(--line); }
+.name-input:focus { border-color: var(--primary); outline: none; background: var(--surface); }
+.confirm { margin-top: 1rem; padding: 1rem; border-radius: 12px; background: var(--warn-soft); }
+.note-ok { margin-top: 1rem; padding: .75rem .875rem; border-radius: 10px; background: var(--ok-soft); color: var(--ok); font-weight: 600; }
+.trying { position: sticky; top: 3.75rem; z-index: 10; background: var(--info-soft); color: var(--info); padding: .625rem 1.5rem; display: flex; align-items: center; gap: .75rem; font-weight: 600; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="btn btn-sm" href="workspace.html"><i data-lucide="arrow-left"></i>Back to building</a>
+  <a class="brand" href="home.html"><span class="brand-mark">a</span><span class="brand-name">Pawsome Grooming</span></a>
+  <span class="spacer"></span>
+  <button class="btn search-btn" data-open-palette><span style="display:inline-flex;align-items:center;gap:.5rem"><i data-lucide="search"></i>Find or do anything</span><span class="kbd">Ctrl K</span></button>
+</header>
+
+<div class="trying" id="trying" hidden>
+  <i data-lucide="eye"></i><span id="trying-text"></span><span class="spacer"></span>
+  <button class="btn btn-sm" id="stop-trying">Back to my latest version</button>
+</div>
+
+<div class="wrap">
+  <section class="list-col">
+    <h1 style="font-size:2rem;line-height:1.15">Saved versions</h1>
+    <p class="intro">Anycreo saves your app after every finished step. Name the ones that matter, and go back to any of them whenever you like. Going back never deletes newer work.</p>
+    <button class="btn" id="save-now"><i data-lucide="bookmark-plus"></i>Save this point with a name</button>
+    <div id="timeline"></div>
+  </section>
+
+  <section class="detail-col" aria-label="Selected version">
+    <div class="card" style="padding:1.25rem;position:sticky;top:5rem">
+      <div class="shot" id="shot"></div>
+      <div style="display:flex;align-items:center;gap:.625rem;margin-top:1rem">
+        <label class="sr-only" for="name">Version name</label>
+        <input class="name-input" id="name">
+        <i data-lucide="pencil" style="color:var(--muted)"></i>
+      </div>
+      <p class="muted small" style="margin:.25rem 0 0" id="meta"></p>
+      <ul class="small" id="what" style="margin:.75rem 0 0;padding-left:1.1rem;color:var(--ink-2)"></ul>
+      <div id="actions"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const BROWN = { c: '#7a2e0e', soft: '#f3e3d6', bg: '#fffaf5', ink: '#2b160a' };
+  const BLUE = { c: '#1f4f82', soft: '#dde8f4', bg: '#f7fafd', ink: '#11263d' };
+  const GREY = { c: '#5c6670', soft: '#eceff1', bg: '#ffffff', ink: '#22282e' };
+  const V = [
+    { num: 9, day: 'Today', name: 'Ready to share', when: '3:02 pm', who: 'Saved automatically', what: ['Everything checked, start to finish', 'Sign-in and emails work'], look: BROWN, title: 'Happy dogs, every visit', cta: 'Book Thursday 10:30', bars: 3 },
+    { num: 8, day: 'Today', name: 'Bookings + emails', when: '2:41 pm', who: 'Saved automatically', what: ['Customers get a confirmation email', 'You get a copy of every booking'], look: BLUE, title: 'Happy dogs, every visit', cta: 'Book Thursday 10:30', bars: 3 },
+    { num: 7, day: 'Today', name: 'Booking page works', when: '2:14 pm', who: 'Saved automatically', what: ['Fixed the calendar month', 'Tested 3 bookings'], look: BLUE, title: 'Happy dogs, every visit', cta: 'Book Thursday 10:30', bars: 2 },
+    { num: 6, day: 'Today', name: 'Before I tried the dark look', when: '1:58 pm', who: 'Named by you', what: ['Your own save, before an experiment'], look: BLUE, title: 'Happy dogs, every visit', cta: 'See prices', bars: 2, mine: true },
+    { num: 5, day: 'Today', name: 'Prices added', when: '1:40 pm', who: 'Saved automatically', what: ['Bath, full groom and nails'], look: GREY, title: 'Happy dogs, every visit', cta: 'See prices', bars: 2 },
+    { num: 4, day: 'Today', name: 'Home page done', when: '1:21 pm', who: 'Saved automatically', what: ['Top bar and welcome headline'], look: GREY, title: 'Happy dogs, every visit', cta: 'Book now', bars: 1 },
+    { num: 3, day: 'Yesterday', name: 'Plan agreed', when: '6:05 pm', who: 'Saved automatically', what: ['10-step plan for your app'], look: GREY, title: 'Your plan is ready', cta: 'Start building', bars: 1 },
+    { num: 2, day: 'Yesterday', name: 'Idea written down', when: '5:40 pm', who: 'Saved automatically', what: ['Your idea, in your words'], look: GREY, title: 'Your idea', cta: 'Review', bars: 1 },
+    { num: 1, day: 'Yesterday', name: 'Fresh start', when: '5:21 pm', who: 'Saved automatically', what: ['An empty app'], look: GREY, title: 'Nothing here yet', cta: 'Begin', bars: 0 }
+  ];
+  let current = 9, picked = 6, mode = 'idle', trying = null;
+
+  function renderList() {
+    let html = '', day = '';
+    V.forEach((v) => {
+      if (v.day !== day) { day = v.day; html += `<p class="day">${day}</p>`; }
+      const cls = [v.num === current ? 'current' : '', v.num === picked ? 'picked' : ''].join(' ');
+      const tag = v.num === current ? '<span class="chip chip-ok">Current</span>' : v.mine ? '<span class="chip chip-primary">Named by you</span>' : '';
+      const thumb = `<span class="thumb" style="background:${v.look.bg}"><i style="width:40%;background:${v.look.c}"></i><i style="width:85%;background:${v.look.soft}"></i><i style="width:65%;background:${v.look.soft}"></i></span>`;
+      html += `<li class="${cls}"><span class="pin"></span><button class="ver" data-num="${v.num}">${thumb}<span style="flex:1;min-width:0"><span style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap"><strong>${esc(v.name)}</strong>${tag}</span><span class="tiny muted" style="display:block">Version ${v.num} · ${v.when}</span><span class="small" style="display:block;color:var(--ink-2);margin-top:.125rem">${v.what[0]}</span></span></button></li>`;
+    });
+    $('#timeline').innerHTML = '<ol class="timeline">' + html + '</ol>';
+  }
+
+  function renderDetail() {
+    const v = V.find((x) => x.num === picked);
+    const L = v.look;
+    $('#shot').style.background = L.bg;
+    $('#shot').innerHTML = `<div class="shot-head" style="border-bottom:1px solid ${L.soft};color:${L.c}"><b>Pawsome</b><span style="font-family:system-ui;font-size:.8125rem">${v.bars > 2 ? 'Sign in' : ''}</span></div>
+      <div class="shot-body" style="color:${L.ink}"><div class="t">${v.title}</div>${('<div class="bar" style="width:70%;background:' + L.soft + '"></div>').repeat(v.bars)}<div class="cta" style="background:${L.c}">${v.cta}</div></div>`;
+    $('#name').value = v.name;
+    $('#meta').textContent = 'Version ' + v.num + ' · ' + v.day + ', ' + v.when + ' · ' + v.who;
+    $('#what').innerHTML = v.what.map((w) => `<li>${w}</li>`).join('');
+    let a = '';
+    if (mode === 'confirm') {
+      a = `<div class="confirm"><p style="margin:0;font-weight:700">Go back to “${esc(v.name)}”?</p><p style="margin:.25rem 0 .75rem" class="small">Your app will look and work exactly like it did then. Everything after it stays saved as Version ${V[0].num + 1}, so you can come back.</p><div style="display:flex;gap:.5rem;flex-wrap:wrap"><button class="btn btn-primary" data-do="restore">Yes, go back</button><button class="btn" data-do="cancel">Keep what I have</button></div></div>`;
+    } else if (mode === 'restored') {
+      a = `<p class="note-ok" role="status">Done. You're back at “${esc(v.name)}”. Your newer work is safe as Version ${V[0].num}.</p>`;
+    } else if (v.num === current) {
+      a = `<p class="note-ok">This is the version you're building on right now.</p>`;
+    } else {
+      a = `<div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem"><button class="btn btn-primary" data-do="ask"><i data-lucide="undo-2"></i>Go back to this version</button><button class="btn" data-do="try"><i data-lucide="eye"></i>Try it without changing anything</button></div>`;
+    }
+    $('#actions').innerHTML = a;
+    window.anycreo.icons();
+  }
+
+  $('#timeline').addEventListener('click', (e) => {
+    const b = e.target.closest('.ver');
+    if (!b) return;
+    picked = Number(b.dataset.num); mode = 'idle';
+    renderList(); renderDetail();
+  });
+  $('#actions').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-do]');
+    if (!b) return;
+    const v = V.find((x) => x.num === picked);
+    if (b.dataset.do === 'ask') mode = 'confirm';
+    if (b.dataset.do === 'cancel') mode = 'idle';
+    if (b.dataset.do === 'try') { trying = v; $('#trying').hidden = false; $('#trying-text').textContent = 'You\'re looking at Version ' + v.num + ', “' + v.name + '”. Nothing has changed.'; }
+    if (b.dataset.do === 'restore') {
+      const top = V[0];
+      V.unshift({ num: top.num + 1, day: 'Today', name: 'Back to “' + v.name + '”', when: 'just now', who: 'Saved when you went back', what: ['Your app as it was at Version ' + v.num, 'Version ' + top.num + ' is still here if you want it'], look: v.look, title: v.title, cta: v.cta, bars: v.bars });
+      current = top.num + 1; picked = current; mode = 'restored';
+    }
+    renderList(); renderDetail();
+  });
+  $('#name').addEventListener('input', (e) => {
+    const v = V.find((x) => x.num === picked);
+    v.name = e.target.value || 'Untitled'; v.mine = true;
+    renderList();
+  });
+  $('#stop-trying').addEventListener('click', () => { $('#trying').hidden = true; });
+  $('#save-now').addEventListener('click', () => {
+    const top = V[0];
+    V.unshift(Object.assign({}, top, { num: top.num + 1, name: 'My save', when: 'just now', who: 'Named by you', mine: true, what: ['Saved by you'] }));
+    current = top.num + 1; picked = current; mode = 'idle';
+    renderList(); renderDetail();
+    $('#name').focus(); $('#name').select();
+  });
+  window.anycreo.addCommands([
+    { group: 'Versions', label: 'Save this point with a name', icon: 'bookmark-plus', run: () => $('#save-now').click() }
+  ]);
+  document.addEventListener('DOMContentLoaded', () => { renderList(); renderDetail(); });
+})();
+</script>
+</body>
+</html>

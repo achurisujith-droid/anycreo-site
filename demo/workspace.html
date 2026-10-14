@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anycreo demo - watch an app being built</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/workspace.css">
+<script src="assets/shared.js"></script>
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+<script src="assets/workspace.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="icon-btn" id="toggle-nav" aria-pressed="true" aria-label="Show or hide the side menu" title="Side menu"><i data-lucide="panel-left"></i></button>
+  <a class="brand" href="home.html"><span class="brand-mark">a</span><span class="brand-name">Pawsome Grooming</span></a>
+  <span class="chip chip-ok hide-sm" id="saved-chip"><i data-lucide="check"></i><span>All work saved</span></span>
+  <span class="spacer"></span>
+  <button class="btn search-btn" data-open-palette><span style="display:inline-flex;align-items:center;gap:.5rem"><i data-lucide="search"></i><span class="label-long">Find or do anything</span></span><span class="kbd">Ctrl K</span></button>
+  <button class="btn hide-sm"><i data-lucide="share-2"></i>Share my app</button>
+  <button class="icon-btn" id="toggle-side" aria-pressed="true" aria-label="Show or hide the preview" title="Preview"><i data-lucide="panel-right"></i></button>
+</header>
+
+<div class="ws" id="ws">
+
+  <nav class="nav" aria-label="App menu">
+    <p class="nav-label">This app</p>
+    <a href="workspace.html" aria-current="page"><i data-lucide="hammer"></i>Build</a>
+    <a href="versions.html"><i data-lucide="history"></i>Saved versions<span class="count" id="nav-versions">1</span></a>
+    <a href="#"><i data-lucide="blocks"></i>Ready-made features</a>
+    <a href="#"><i data-lucide="palette"></i>Colours and look</a>
+    <a href="#"><i data-lucide="plug"></i>Connected services</a>
+    <p class="nav-label">Your other apps</p>
+    <a href="#"><i data-lucide="croissant"></i>Bakery orders</a>
+    <a href="#"><i data-lucide="graduation-cap"></i>Tutor schedule</a>
+    <a href="home.html" class="new"><i data-lucide="plus"></i>Start a new app</a>
+    <div class="plan-box">
+      <strong>Builder plan</strong>
+      Using your Claude plan · 64% of this week left
+      <div class="meter"><span style="width:64%"></span></div>
+    </div>
+  </nav>
+
+  <main class="main" id="main">
+    <div class="column" id="column">
+
+      <section class="card progress" id="progress" aria-label="Progress" hidden>
+        <div class="progress-top">
+          <div class="ring" id="ring">
+            <svg viewBox="0 0 84 84" aria-hidden="true"><circle class="track" cx="42" cy="42" r="34"></circle><circle class="fill" id="ring-fill" cx="42" cy="42" r="34"></circle></svg>
+            <span class="ring-num" id="pct" role="img" aria-label="0 percent done">0%</span>
+          </div>
+          <div style="min-width:0;flex:1">
+            <h1 id="headline">Getting started</h1>
+            <p class="progress-sub" id="sub">&nbsp;</p>
+          </div>
+        </div>
+        <ol class="stages" id="stages">
+          <li>Plan</li><li>Build</li><li>Check</li><li>Ready</li>
+        </ol>
+        <div class="team">
+          <div class="team-head"><span id="team-label">Your team</span><button class="btn btn-ghost btn-sm" id="team-toggle" aria-expanded="true">Hide</button></div>
+          <ul id="team"></ul>
+        </div>
+      </section>
+
+      <div class="empty-hello" id="hello">
+        <h2>What would you like to build?</h2>
+        <p>Describe it the way you'd explain it to a friend. Anycreo plans it, builds it, checks it, and saves your work after every step.</p>
+      </div>
+
+      <div id="thread" style="display:flex;flex-direction:column;gap:1.125rem" aria-live="polite"></div>
+      <div id="live"></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <div class="composer-wrap">
+      <form class="composer" id="composer">
+        <label class="sr-only" for="msg">Message</label>
+        <textarea id="msg" rows="2" placeholder="Tell Anycreo what to build or change…">Build a booking app for my dog grooming shop. Customers pick a groomer and a time, then get a confirmation email.</textarea>
+        <div class="composer-row">
+          <button type="button" class="icon-btn" aria-label="Attach a file or screenshot"><i data-lucide="paperclip"></i></button>
+          <button type="button" class="icon-btn" aria-label="Speak instead of typing"><i data-lucide="mic"></i></button>
+          <span class="tiny muted" style="margin-left:.25rem">Ctrl K for shortcuts</span>
+          <span class="spacer"></span>
+          <button type="button" class="btn btn-sm" id="pause-helpers" hidden><i data-lucide="pause"></i>Pause</button>
+          <button type="submit" class="btn btn-primary" aria-label="Send" style="width:2.5rem;padding:0"><i data-lucide="arrow-up"></i></button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <aside class="side" aria-label="Preview and plan">
+    <div class="side-head">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="preview">Preview</button>
+        <button role="tab" aria-selected="false" data-tab="plan">Plan</button>
+        <button role="tab" aria-selected="false" data-tab="versions">Versions</button>
+      </div>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="close-side" aria-label="Close this panel"><i data-lucide="x"></i></button>
+    </div>
+    <div class="side-body">
+
+      <div class="tab-panel" data-panel="preview">
+        <div class="preview-bar">
+          <span class="preview-url"><i data-lucide="globe"></i>Your app · on your computer</span>
+          <button class="icon-btn" id="device" aria-label="Phone size" title="Phone size"><i data-lucide="smartphone"></i></button>
+          <button class="btn btn-sm" id="point"><i data-lucide="mouse-pointer-click"></i>Point at something</button>
+        </div>
+        <div class="frame" id="frame">
+          <div class="site" id="site">
+            <div class="site-empty" id="site-empty">Your app will appear here as it's built.</div>
+            <div data-step="2" class="flex site-head" data-point="the top bar"><span class="site-logo">Pawsome</span><span style="font-family:system-ui;font-size:12px;display:flex;gap:12px"><span>Prices</span><span data-step="8" style="font-weight:700">Sign in</span></span></div>
+            <div data-step="2" class="site-hero" data-point="the welcome headline"><h3>Happy dogs, every visit</h3><p>Book a groom in 30 seconds.</p></div>
+            <div data-step="3" class="grid site-prices" data-point="the price cards">
+              <div class="site-price">Bath<b>$35</b></div><div class="site-price">Full groom<b>$65</b></div><div class="site-price">Nails<b>$15</b></div>
+            </div>
+            <div data-step="4" class="site-book" data-point="the booking calendar">
+              <div class="site-chips"><span class="on">Maya</span><span>Jordan</span><span>Sam</span></div>
+              <div class="site-month" id="month">October</div>
+              <div class="site-cal" id="cal"></div>
+              <div class="site-cta">Book Thursday 10:30</div>
+            </div>
+            <div data-step="6" class="site-note" data-point="the opening hours">Maya works Mon–Fri, 9 to 5 · Jordan weekends</div>
+            <div data-step="7" class="site-note" data-point="the email note">You'll get a confirmation email right away.</div>
+          </div>
+        </div>
+        <p class="hint-line" id="point-hint">Click "Point at something", then click any part of your app and say what to change.</p>
+      </div>
+
+      <div class="tab-panel" data-panel="plan" hidden>
+        <p class="small muted" style="margin:0 0 .75rem" id="plan-summary">The plan appears here once it's written.</p>
+        <ol class="plan-list" id="plan"></ol>
+      </div>
+
+      <div class="tab-panel" data-panel="versions" hidden>
+        <ul class="ver-list" id="versions"></ul>
+        <a href="versions.html" class="small" style="display:inline-block;margin-top:.75rem">Open all versions</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div class="demo" role="group" aria-label="Demo controls (sample only)">
+  <a class="back" href="../" title="Back to anycreo.com" aria-label="Back to anycreo.com"><i data-lucide="arrow-left"></i></a><span class="lbl">Sample, made-up data</span>
+  <button class="main" id="demo-play"><i data-lucide="play"></i><span>Play build</span></button>
+  <button id="demo-speed" title="Speed">1×</button>
+  <button id="demo-problem" title="Jump to the problem">Problem</button>
+  <button id="demo-done" title="Jump to the end">End</button>
+  <button id="demo-restart" title="Start over" aria-label="Start over"><i data-lucide="rotate-ccw"></i></button>
+</div>
+
+</body>
+</html>

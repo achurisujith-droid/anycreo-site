@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your apps · Anycreo sample</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+<script src="assets/shared.js"></script>
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+<style>
+.wrap { max-width: 72rem; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+.start { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.start textarea { width: 100%; border: 1px solid var(--line-strong); border-radius: 14px; padding: .875rem 1rem; resize: vertical; min-height: 6rem; background: var(--surface); font-size: 1.0625rem; }
+.start textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+.ideas { display: flex; flex-wrap: wrap; gap: .5rem; }
+.idea { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: .4375rem .875rem; font-size: .875rem; cursor: pointer; color: var(--ink-2); }
+.idea:hover { border-color: var(--primary); color: var(--primary); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr)); gap: 1.25rem; margin-top: 1rem; }
+.app { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.app:hover { transform: translateY(-2px); color: var(--ink); box-shadow: var(--shadow-lg); }
+.app-shot { height: 8.5rem; padding: 1rem; display: flex; flex-direction: column; gap: .4375rem; border-bottom: 1px solid var(--line); }
+.app-shot i { display: block; height: .5rem; border-radius: 999px; }
+.app-body { padding: 1rem 1.125rem 1.125rem; display: flex; flex-direction: column; gap: .625rem; }
+.app-row { display: flex; align-items: center; gap: .625rem; }
+.mini-ring { width: 2.25rem; height: 2.25rem; flex: none; transform: rotate(-90deg); }
+.mini-ring circle { fill: none; stroke-width: 5; }
+.bar { height: .375rem; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.bar span { display: block; height: 100%; border-radius: 999px; background: var(--progress); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="home.html"><span class="brand-mark">a</span><span class="brand-name">Anycreo</span></a>
+  <span class="spacer"></span>
+  <button class="btn search-btn" data-open-palette><span style="display:inline-flex;align-items:center;gap:.5rem"><i data-lucide="search"></i>Find or do anything</span><span class="kbd">Ctrl K</span></button>
+  <span class="chip chip-quiet"><i data-lucide="sparkles"></i>Builder plan</span>
+</header>
+
+<div class="wrap">
+  <h1 style="font-size:2.25rem;line-height:1.1">Good afternoon, Priya</h1>
+  <p class="muted" style="margin:.5rem 0 1.5rem;font-size:1.0625rem">Pick up where you left off, or start something new.</p>
+
+  <section class="card start" aria-label="Start a new app">
+    <label for="idea" style="font-weight:700;font-size:1.125rem">What do you want to build next?</label>
+    <textarea id="idea" placeholder="For example: a sign-up sheet for my running club, with reminders the night before."></textarea>
+    <div class="ideas">
+      <button class="idea" data-idea="A booking page for my yoga classes, with a waiting list when a class is full.">Class bookings</button>
+      <button class="idea" data-idea="An order form for my bakery, so customers can pre-order cakes for pickup.">Bakery orders</button>
+      <button class="idea" data-idea="A simple portal where my tutoring students see their homework and upcoming lessons.">Student portal</button>
+      <button class="idea" data-idea="A tracker for my small team's support requests, with who is handling each one.">Team tracker</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap">
+      <a class="btn btn-primary" href="workspace.html"><i data-lucide="arrow-right"></i>Start building</a>
+      <button class="btn"><i data-lucide="file-up"></i>Upload a document instead</button>
+      <span class="small muted">Anycreo plans it with you first. Nothing is built until you agree.</span>
+    </div>
+  </section>
+
+  <h2 style="font-size:1.375rem;margin-top:2.5rem">Your apps</h2>
+  <div class="grid">
+    <a class="card app" href="workspace.html">
+      <div class="app-shot" style="background:#fffaf5"><i style="width:35%;background:#7a2e0e"></i><i style="width:80%;background:#f3e3d6"></i><i style="width:60%;background:#f3e3d6"></i><i style="width:45%;background:#f3e3d6"></i></div>
+      <div class="app-body">
+        <div class="app-row"><strong style="flex:1;font-size:1.0625rem">Pawsome Grooming</strong><span class="chip chip-primary"><span class="dot pulse"></span>Building</span></div>
+        <div class="bar"><span style="width:30%"></span></div>
+        <div class="small muted">30% · 3 helpers working · Saved as Version 6</div>
+      </div>
+    </a>
+    <a class="card app" href="workspace.html">
+      <div class="app-shot" style="background:#fdf6fb"><i style="width:30%;background:#a3166e"></i><i style="width:70%;background:#f6dcec"></i><i style="width:85%;background:#f6dcec"></i></div>
+      <div class="app-body">
+        <div class="app-row"><strong style="flex:1;font-size:1.0625rem">Bakery orders</strong><span class="chip chip-ok"><i data-lucide="check"></i>Ready</span></div>
+        <div class="bar"><span style="width:100%;background:var(--ok)"></span></div>
+        <div class="small muted">Shared with 2 people · Version 14 · yesterday</div>
+      </div>
+    </a>
+    <a class="card app" href="workspace.html">
+      <div class="app-shot" style="background:#f5f8ff"><i style="width:40%;background:#1f4f82"></i><i style="width:60%;background:#dde8f4"></i></div>
+      <div class="app-body">
+        <div class="app-row"><strong style="flex:1;font-size:1.0625rem">Tutor schedule</strong><span class="chip chip-plan"><i data-lucide="message-circle"></i>Planning</span></div>
+        <div class="bar"><span style="width:8%;background:var(--plan)"></span></div>
+        <div class="small muted">Waiting for your answer: "Can students cancel?"</div>
+      </div>
+    </a>
+    <a class="card app" href="workspace.html">
+      <div class="app-shot" style="background:#f7f7f5"><i style="width:30%;background:#3a3a3a"></i><i style="width:75%;background:#e6e6e3"></i><i style="width:55%;background:#e6e6e3"></i></div>
+      <div class="app-body">
+        <div class="app-row"><strong style="flex:1;font-size:1.0625rem">Running club sign-ups</strong><span class="chip chip-warn"><i data-lucide="pause"></i>Paused</span></div>
+        <div class="bar"><span style="width:55%;background:var(--warn)"></span></div>
+        <div class="small muted">Your Claude plan needs a break until 4 pm · work is saved</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('[data-idea]').forEach((b) => b.addEventListener('click', () => {
+  const t = document.getElementById('idea');
+  t.value = b.dataset.idea;
+  t.focus();
+}));
+</script>
+</body>
+</html>

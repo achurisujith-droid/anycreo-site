@@ -4,411 +4,345 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anycreo - Anyone can create</title>
-  <meta name="description" content="Describe the app you want. Anycreo builds it on your computer with the AI plan you already pay for. Free to download.">
+  <meta name="description" content="Build a real app for your business by describing it. Watch it work on your PC, then put it online in one click. Free for Windows.">
   <meta property="og:title" content="Anycreo - Anyone can create">
-  <meta property="og:description" content="Build a production-ready app without writing code. Watch it take shape on your PC, then put it online in one click.">
+  <meta property="og:description" content="Build a real app by describing it. Watch it work on your PC, then put it online in one click.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://anycreo.com/">
-  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0f1113" media="(prefers-color-scheme: dark)">
+  <meta property="og:image" content="https://anycreo.com/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://anycreo.com/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5">
-  <script defer src="app.js?v=4"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="styles.css?v=10">
+  <script defer src="app.js?v=10"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav">
+  <header class="nav" id="top">
     <div class="wrap nav__inner">
       <a class="brand" href="#top" aria-label="Anycreo home">
-        <img src="favicon.svg" alt="" width="28" height="28">
+        <img src="favicon.svg" alt="" width="30" height="30">
         <span>Anycreo</span>
       </a>
-      <nav aria-label="Main">
-        <ul class="nav__links">
-          <li><a href="#how">How it works</a></li>
-          <li><a href="#included">What you get</a></li>
-          <li><a href="#components">Components</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">Questions</a></li>
-        </ul>
+      <nav class="nav__menu" id="menu" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#examples">Examples</a>
+        <a href="#compare">Why Anycreo</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">Questions</a>
       </nav>
-      <a class="btn btn--primary btn--sm" href="#download">Download free</a>
+      <div class="nav__end">
+        <a class="btn btn--primary btn--sm" href="#download">Download free</a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><i class="ph ph-list" aria-hidden="true"></i></button>
+      </div>
     </div>
   </header>
 
   <main id="main">
     <!-- Hero -->
-    <section class="hero" id="top">
-      <div class="wrap hero__grid">
-        <div class="hero__copy">
-          <h1 class="display">Anyone can <em>create.</em></h1>
-          <p class="lede">Build a production-ready app without writing code. Watch it take shape on your PC, then put it online in one click.</p>
-          <div class="hero__ctas">
-            <a class="btn btn--primary" href="#download">Download free</a>
-            <a class="btn btn--ghost" href="#pricing">See pricing</a>
-          </div>
+    <section class="hero">
+      <div class="wrap hero__copy">
+        <p class="pill"><i class="ph ph-sparkle" aria-hidden="true"></i> Runs on the ChatGPT, Claude or Google plan you already have</p>
+        <h1 class="display">Anyone can <span>create.</span></h1>
+        <p class="lede">Build a real app for your business by describing it. Watch it work on your PC, then put it online in one click.</p>
+        <div class="ctas">
+          <a class="btn btn--primary btn--lg" href="#download"><i class="ph ph-windows-logo" aria-hidden="true"></i> Download free for Windows</a>
+          <a class="btn btn--ghost btn--lg" href="#how">See how it works</a>
         </div>
+      </div>
 
-        <figure class="preview" aria-label="What using Anycreo looks like">
-          <div class="window">
-            <div class="window__bar">
-              <span class="window__lights" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="window__title">Shift planner for my café</span>
+      <div class="wrap stage-wrap">
+        <figure class="stage" aria-label="Anycreo building a salon booking app: you ask for online booking, it adds it, then you publish it">
+          <div class="app">
+            <div class="app__bar">
+              <span class="app__name"><img src="favicon.svg" alt="" width="16" height="16"> Anycreo</span>
+              <span class="app__project">Bloom Hair Studio</span>
+              <span class="app__win" aria-hidden="true"><i></i><i></i><i></i></span>
             </div>
-            <div class="window__body" aria-live="polite">
-              <div class="scene is-active" data-scene="0">
-                <p class="scene__q">Where is your idea?</p>
-                <div class="choice is-picked">
-                  <strong>Talk it through</strong>
-                  <span>It asks one question at a time.</span>
+            <div class="app__body">
+              <aside class="chat">
+                <div class="chat__msgs">
+                  <p class="msg msg--you">Customers should be able to book online and pay a $10 deposit.</p>
+                  <p class="msg msg--ai s1">Good idea. I'll add a booking page and take the deposit with the ready-made payments part. This takes about a minute.</p>
+                  <div class="work s1">
+                    <p class="work__row done"><i class="ph ph-check" aria-hidden="true"></i> Booking page</p>
+                    <p class="work__row s2 done"><i class="ph ph-check" aria-hidden="true"></i> Deposits (payments part, tested)</p>
+                    <p class="work__row s2 done"><i class="ph ph-check" aria-hidden="true"></i> Checked: 38 of 38 passed</p>
+                  </div>
+                  <p class="msg msg--ai s2">Done. Try booking on the right. Ready to put it online?</p>
                 </div>
-                <div class="choice">
-                  <strong>Already worked out</strong>
-                  <span>It only points out gaps.</span>
+                <div class="chat__input">
+                  <span>Describe what to change...</span>
+                  <i class="ph ph-arrow-up" aria-hidden="true"></i>
                 </div>
-                <div class="choice">
-                  <strong>Import it</strong>
-                  <span>Word, PowerPoint, PDF or sketches.</span>
-                </div>
-              </div>
+              </aside>
 
-              <div class="scene" data-scene="1">
-                <div class="bubble bubble--you">An app for my café so staff can see and swap their shifts.</div>
-                <div class="bubble bubble--app">Got it. Who decides the rota each week: you, or a manager?</div>
-                <div class="bubble bubble--you">Me. Staff just ask to swap.</div>
-                <div class="thinking"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span> Thinking about your answer. This can take a few seconds.</div>
-              </div>
-
-              <div class="scene" data-scene="2">
-                <p class="scene__q">How far do you want to go?</p>
-                <div class="choice">
-                  <strong>See it first</strong>
-                  <span>Every screen, with made-up data.</span>
+              <div class="preview">
+                <div class="preview__bar">
+                  <span class="live"><i></i> Your app, running on this PC</span>
+                  <span class="btn btn--primary btn--xs publish">Publish</span>
                 </div>
-                <div class="choice is-picked">
-                  <strong>A small working version</strong>
-                  <span>Real sign-in, for you and a few people.</span>
+                <div class="site">
+                  <header class="site__top">
+                    <strong>Bloom</strong>
+                    <span>Services</span><span>Stylists</span><span class="site__cta">Book now</span>
+                  </header>
+                  <div class="site__grid">
+                    <div class="site__day">
+                      <p class="site__h">Today, Thursday</p>
+                      <div class="slot"><b>09:30</b><span>Cut and finish</span><em>Maya</em></div>
+                      <div class="slot slot--alt"><b>11:00</b><span>Colour</span><em>Leo</em></div>
+                      <div class="slot"><b>13:15</b><span>Blow-dry</span><em>Maya</em></div>
+                      <div class="slot slot--new s2"><b>15:00</b><span>Cut and finish</span><em>New, paid</em></div>
+                    </div>
+                    <div class="book s1">
+                      <p class="site__h">Book online</p>
+                      <div class="book__days"><span>Thu</span><span class="on">Fri</span><span>Sat</span><span>Mon</span></div>
+                      <div class="book__times"><span>10:00</span><span class="on">15:00</span><span>16:30</span></div>
+                      <div class="book__pay"><i class="ph ph-credit-card" aria-hidden="true"></i> Deposit <b>$10</b></div>
+                      <span class="book__btn">Pay and book</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="choice">
-                  <strong>The real app</strong>
-                  <span>For customers, with checks before launch.</span>
+                <div class="toast s3" role="status">
+                  <i class="ph ph-check-circle" aria-hidden="true"></i>
+                  <div><strong>Your app is live</strong><span>bloomhairstudio.com</span></div>
                 </div>
-              </div>
-
-              <div class="scene" data-scene="3">
-                <p class="scene__q">Building your app</p>
-                <ul class="log">
-                  <li class="done">Added sign-in for you and your staff</li>
-                  <li class="done">Created the weekly rota screen</li>
-                  <li class="done">Added swap requests with your approval</li>
-                  <li class="now">Checking the work before you see it</li>
-                </ul>
-                <div class="result">186 checks passed. Nothing needs your attention.</div>
               </div>
             </div>
-            <ol class="window__steps" role="tablist" aria-label="Preview steps">
-              <li><button role="tab" aria-selected="true" data-go="0">Your idea</button></li>
-              <li><button role="tab" aria-selected="false" data-go="1">A conversation</button></li>
-              <li><button role="tab" aria-selected="false" data-go="2">How far</button></li>
-              <li><button role="tab" aria-selected="false" data-go="3">It builds</button></li>
-            </ol>
           </div>
         </figure>
       </div>
     </section>
 
-    <!-- Works with -->
-    <section class="works">
-      <div class="wrap works__inner">
-        <p>Runs on the plan you already have:</p>
-        <ul class="works__list">
-          <li>Claude</li>
-          <li>ChatGPT</li>
-          <li>Google</li>
-        </ul>
-        <p class="works__note">Anycreo never charges you for AI.</p>
-      </div>
-    </section>
-
-
-    <!-- Three promises -->
-    <section class="show" id="see-it">
-      <div class="wrap">
-        <article class="feat feat--studio reveal">
-          <div class="feat__copy">
-            <h2 class="h2">See your app while it is being built.</h2>
-            <p class="sub">Your app runs on your own PC from the first minute. Every change shows up in the preview as it happens, so you can click around and say what to change next.</p>
-          </div>
-          <div class="studio" aria-label="Anycreo with the chat on the left and your app running on the right">
-            <div class="studio__bar">
-              <span class="window__lights" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="window__title">Anycreo</span>
-            </div>
-            <div class="studio__body">
-              <div class="studio__chat">
-                <div class="bubble bubble--you">Show who is on the rota this week, with a search box.</div>
-                <div class="bubble bubble--app">Done. The list is on the right. Try typing a name.</div>
-                <div class="bubble bubble--you">Can it show when each person was last in?</div>
-                <div class="thinking"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span> Adding that now</div>
-              </div>
-              <div class="studio__preview">
-                <div class="studio__label"><span class="live" aria-hidden="true"></span>Your app, running on this PC</div>
-                <img src="img/preview-rota.webp" width="900" height="520" alt="A staff rota list with a search box, built by Anycreo, showing names, teams, shifts and when each person was last seen." loading="lazy">
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <div class="feat-pair">
-          <article class="feat feat--publish reveal">
-            <h2 class="h3x">Put it online in one click.</h2>
-            <p class="sub">No servers, no setup, no accounts with anyone else. Press Publish and your app gets a link you can share.</p>
-            <div class="publish" aria-hidden="true">
-              <div class="publish__row">
-                <div>
-                  <strong>Shift planner</strong>
-                  <span>Ready to publish</span>
-                </div>
-                <span class="btn btn--primary btn--sm publish__btn">Publish</span>
-              </div>
-              <div class="publish__done">
-                <span class="tick"></span>
-                <div>
-                  <strong>Your app is live</strong>
-                  <span>rota.yourcafe.com</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="feat feat--ready reveal">
-            <h2 class="h3x">Production-ready, with no coding knowledge.</h2>
-            <p class="sub">Real sign-in, real data and real payments, checked before launch. Anycreo tells you plainly whether it is ready.</p>
-            <ul class="ready" aria-label="Example launch check">
-              <li>Only signed-in people can see private pages</li>
-              <li>Each customer's data is kept separate</li>
-              <li>Payments tested end to end</li>
-              <li>Daily backups switched on</li>
-            </ul>
-            <p class="ready__verdict">Ready to launch</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Difference -->
-    <section class="diff reveal">
-      <div class="wrap diff__grid">
-        <h2 class="h2">Other builders charge you every time the AI tries. When it gets things wrong, you pay again.</h2>
-        <div class="diff__points">
-          <div>
-            <h3>Never charged for AI</h3>
-            <p>Anycreo uses your own Claude, ChatGPT or Google plan. A failed attempt costs you nothing extra.</p>
-          </div>
-          <div>
-            <h3>Your app lives on your computer</h3>
-            <p>The project is a normal folder you own. Nothing about your idea passes through our servers.</p>
-          </div>
-          <div>
-            <h3>Checked before you see it</h3>
-            <p>Every claim of "done" comes with proof: the checks that ran, and whether they passed.</p>
-          </div>
-        </div>
+    <!-- Three promises strip -->
+    <section class="promises" aria-label="What you get">
+      <div class="wrap promises__grid">
+        <div><i class="ph ph-monitor" aria-hidden="true"></i><p><strong>See it as it's built.</strong> Your app runs on your own PC from the first minute.</p></div>
+        <div><i class="ph ph-cloud-arrow-up" aria-hidden="true"></i><p><strong>Online in one click.</strong> No servers, no setup. Press Publish.</p></div>
+        <div><i class="ph ph-shield-check" aria-hidden="true"></i><p><strong>Ready for real customers.</strong> Checked before launch, in plain words.</p></div>
       </div>
     </section>
 
     <!-- How it works -->
     <section class="how" id="how">
       <div class="wrap">
-        <h2 class="h2 reveal">From an idea to a working app, in plain English.</h2>
-        <ol class="how__list">
-          <li class="reveal">
-            <span class="how__n" aria-hidden="true">1</span>
-            <div>
-              <h3>Tell it your idea</h3>
-              <p>Talk it through, paste what you've written, or drop in your documents. No forms, no jargon.</p>
+        <h2 class="h2 reveal">Three steps. No code, ever</h2>
+        <div class="how__grid">
+          <article class="step reveal">
+            <div class="step__art step__art--talk" aria-hidden="true">
+              <p class="msg msg--you">An app for my clinic so patients can book and get reminders.</p>
+              <p class="msg msg--ai">Who books: patients themselves, or your front desk?</p>
             </div>
-          </li>
-          <li class="reveal">
-            <span class="how__n" aria-hidden="true">2</span>
-            <div>
-              <h3>Choose how far to go</h3>
-              <p>A clickable preview, a small version for friends, or the real thing for customers.</p>
+            <h3>Describe it</h3>
+            <p>Talk it through in your own words, or drop in a document you've already written. It asks one question at a time.</p>
+          </article>
+          <article class="step reveal">
+            <div class="step__art step__art--build" aria-hidden="true">
+              <p class="work__row done"><i class="ph ph-check"></i> Sign-in for staff</p>
+              <p class="work__row done"><i class="ph ph-check"></i> Patient booking page</p>
+              <p class="work__row now"><i class="ph ph-circle-notch"></i> Reminder emails, about 2 minutes</p>
             </div>
-          </li>
-          <li class="reveal">
-            <span class="how__n" aria-hidden="true">3</span>
-            <div>
-              <h3>Watch it build</h3>
-              <p>Every step is described in everyday words. It only stops to ask about things you can actually decide.</p>
+            <h3>Watch it build</h3>
+            <p>Every step is described in everyday words, with honest waiting times. It only stops to ask things you can actually decide.</p>
+          </article>
+          <article class="step reveal">
+            <div class="step__art step__art--publish" aria-hidden="true">
+              <span class="btn btn--primary btn--xs">Publish</span>
+              <p class="url"><i class="ph ph-globe-simple"></i> sunrisedental.com</p>
             </div>
-          </li>
-          <li class="reveal">
-            <span class="how__n" aria-hidden="true">4</span>
-            <div>
-              <h3>Put it online</h3>
-              <p>One click gives you a link to share. On Builder and Pro, use your own web address.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Included -->
-    <section class="included" id="included">
-      <div class="wrap">
-        <h2 class="h2 reveal">The hard parts come ready-made.</h2>
-        <p class="sub reveal">Sign-in, payments and file uploads are where home-made apps leak data. Anycreo installs tested versions instead of writing them from scratch. They come with every paid plan, paid for with your credits.</p>
-        <div class="bento">
-          <article class="tile tile--wide tile--accent reveal">
-            <h3>Sign-in that is already safe</h3>
-            <p>Accounts, password reset, roles and keeping each customer's data separate. Installed, tested, and not something the AI can quietly break.</p>
-            <ul class="chips" aria-label="Included">
-              <li>Accounts</li><li>Password reset</li><li>Roles</li><li>Teams</li>
-            </ul>
-          </article>
-          <article class="tile reveal">
-            <h3>Payments</h3>
-            <p>Subscriptions and invoices through Stripe, ready to switch on.</p>
-          </article>
-          <article class="tile reveal">
-            <h3>Files and documents</h3>
-            <p>Uploads, spreadsheet imports, PDFs and reading text out of documents.</p>
-          </article>
-          <article class="tile tile--themes reveal">
-            <h3>Ten looks to start from</h3>
-            <p>Change colours whenever you like. If text becomes hard to read, Anycreo fixes it and tells you why.</p>
-            <ul class="swatches" aria-label="The ten looks">
-              <li style="--c:#1f5fd0">Calm</li>
-              <li style="--c:#2b5f8a">Slate</li>
-              <li style="--c:#a32b1e">Ink</li>
-              <li style="--c:#2f6b42">Moss</li>
-              <li style="--c:#0f6d92">Clinic</li>
-              <li style="--c:#a15a12">Warm</li>
-              <li style="--c:#6b3fa0">Violet</li>
-              <li style="--c:#111111">Mono</li>
-              <li style="--c:#1b3a6b">Harbour</li>
-              <li style="--c:#0b3d91">High contrast</li>
-            </ul>
-          </article>
-          <article class="tile tile--dark reveal">
-            <h3>A straight answer: is it ready?</h3>
-            <p>Before anyone else sees your app, Anycreo tells you whether it is ready to launch and shows the evidence. Free on every plan.</p>
+            <h3>Publish it</h3>
+            <p>One click puts it online with a link to share. On Builder and Pro, use your own web address.</p>
           </article>
         </div>
       </div>
     </section>
 
-
-    <!-- Components and modules -->
-    <section class="library" id="components">
+    <!-- Examples gallery -->
+    <section class="examples" id="examples">
       <div class="wrap">
-        <h2 class="h2 reveal">Components and modules.</h2>
-        <p class="sub reveal">Components are single parts, like payments. Modules are whole features made from several of them. Add either to your app with your credits, and they stay yours.</p>
+        <h2 class="h2 reveal">What you could build this week</h2>
+        <p class="sub reveal">Example apps made from Anycreo's ready-made parts and looks. Yours will be shaped by what you describe.</p>
+        <div class="gallery">
+          <article class="ex ex--wide reveal" style="--x:#1f5fd0;--xs:#e8effc">
+            <div class="ex__screen" aria-hidden="true">
+              <div class="mini-top"><b>Corner Café</b><span>Rota</span><span>Staff</span><span class="mini-badge">2 swaps waiting</span></div>
+              <div class="week">
+                <span class="week__h"></span><span class="week__h">Mon</span><span class="week__h">Tue</span><span class="week__h">Wed</span><span class="week__h">Thu</span><span class="week__h">Fri</span>
+                <span class="week__n">Ada</span><span class="sh">7-3</span><span class="sh">7-3</span><span></span><span class="sh">7-3</span><span class="sh sh--swap">Swap?</span>
+                <span class="week__n">Bo</span><span></span><span class="sh">3-11</span><span class="sh">3-11</span><span class="sh">3-11</span><span></span>
+                <span class="week__n">Cyra</span><span class="sh">3-11</span><span></span><span class="sh">7-3</span><span></span><span class="sh">7-3</span>
+              </div>
+            </div>
+            <div class="ex__meta"><h3>Shift planner</h3><p>For a café owner who was running the rota on WhatsApp.</p></div>
+          </article>
 
-        <div class="library__tabs reveal" role="tablist" aria-label="Library">
-          <button role="tab" aria-selected="true" aria-controls="tab-components" id="t-components">Components <span>14</span></button>
-          <button role="tab" aria-selected="false" aria-controls="tab-modules" id="t-modules">Modules <span>3</span></button>
+          <article class="ex reveal" style="--x:#0f6d92;--xs:#e4f2f7">
+            <div class="ex__screen" aria-hidden="true">
+              <div class="mini-top"><b>Sunrise Dental</b><span class="mini-badge">Today: 9</span></div>
+              <div class="appt"><b>09:00</b><span>Check-up</span><em>R. Iyer</em></div>
+              <div class="appt"><b>10:30</b><span>Cleaning</span><em>T. Moss</em></div>
+              <div class="appt appt--hl"><b>11:15</b><span>New patient</span><em>Booked online</em></div>
+            </div>
+            <div class="ex__meta"><h3>Clinic bookings</h3><p>Patients book themselves and get reminders.</p></div>
+          </article>
+
+          <article class="ex reveal" style="--x:#2f6b42;--xs:#e6f1ea">
+            <div class="ex__screen" aria-hidden="true">
+              <div class="mini-top"><b>Quote #1042</b><span class="mini-badge">Draft</span></div>
+              <div class="line"><span>Kitchen tiling, 14 m²</span><b>$1,820</b></div>
+              <div class="line"><span>Materials</span><b>$960</b></div>
+              <div class="line"><span>Labour, 3 days</span><b>$1,500</b></div>
+              <div class="line line--total"><span>Total</span><b>$4,280</b></div>
+            </div>
+            <div class="ex__meta"><h3>Quote builder</h3><p>A tiler sends tidy quotes from their phone.</p></div>
+          </article>
+
+          <article class="ex ex--wide reveal" style="--x:#a32b1e;--xs:#f8e9e6">
+            <div class="ex__screen" aria-hidden="true">
+              <div class="mini-top"><b>IELTS Prep</b><span>Students</span><span>Lessons</span><span class="mini-badge">$480 this month</span></div>
+              <div class="stu"><span class="av">PK</span><span>Priya K.</span><span class="bar" style="--p:82%"></span><em>Band 7.5 target</em></div>
+              <div class="stu"><span class="av">JM</span><span>Jonas M.</span><span class="bar" style="--p:58%"></span><em>Band 6.5 target</em></div>
+              <div class="stu"><span class="av">AL</span><span>Amara L.</span><span class="bar" style="--p:71%"></span><em>Band 7 target</em></div>
+            </div>
+            <div class="ex__meta"><h3>Course tracker</h3><p>A tutor tracks students and takes monthly payments.</p></div>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <div class="library__panel" id="tab-components" role="tabpanel" aria-labelledby="t-components">
-          <div class="filters" role="group" aria-label="Filter components"><button type="button" aria-pressed="true" data-filter="All">All</button><button type="button" aria-pressed="false" data-filter="People">People</button><button type="button" aria-pressed="false" data-filter="Money">Money</button><button type="button" aria-pressed="false" data-filter="Files">Files</button><button type="button" aria-pressed="false" data-filter="Messages">Messages</button><button type="button" aria-pressed="false" data-filter="Trust">Trust</button></div>
-          <ul class="comp-grid">
-            <li class="comp" data-cat="People">
-              <div><h3>Sign-in and accounts</h3><p>Email and password accounts, done safely.</p></div>
-              <span class="comp__cost">40 credits</span>
-            </li>
-            <li class="comp" data-cat="People">
-              <div><h3>Password reset</h3><p>The forgot-password email and link.</p></div>
-              <span class="comp__cost">25 credits</span>
-            </li>
-            <li class="comp" data-cat="People">
-              <div><h3>Roles and permissions</h3><p>Decide who can see and change what.</p></div>
-              <span class="comp__cost">35 credits</span>
-            </li>
-            <li class="comp" data-cat="People">
-              <div><h3>Teams and organisations</h3><p>Keep each customer's data separate.</p></div>
-              <span class="comp__cost">50 credits</span>
-            </li>
-            <li class="comp" data-cat="Money">
-              <div><h3>Subscription payments</h3><p>Monthly plans and invoices through Stripe.</p></div>
-              <span class="comp__cost">60 credits</span>
-            </li>
-            <li class="comp" data-cat="Messages">
-              <div><h3>Emails</h3><p>Receipts, invites and alerts that arrive.</p></div>
-              <span class="comp__cost">25 credits</span>
-            </li>
-            <li class="comp" data-cat="Files">
-              <div><h3>File storage</h3><p>Uploads that are private by default.</p></div>
-              <span class="comp__cost">30 credits</span>
-            </li>
-            <li class="comp" data-cat="Files">
-              <div><h3>Spreadsheet import</h3><p>Bring in a CSV with checks on every row.</p></div>
-              <span class="comp__cost">25 credits</span>
-            </li>
-            <li class="comp" data-cat="Files">
-              <div><h3>PDF creation</h3><p>Turn any page into a PDF.</p></div>
-              <span class="comp__cost">25 credits</span>
-            </li>
-            <li class="comp" data-cat="Files">
-              <div><h3>Read documents</h3><p>Pull the text out of PDFs and Word files.</p></div>
-              <span class="comp__cost">30 credits</span>
-            </li>
-            <li class="comp" data-cat="Trust">
-              <div><h3>Activity log</h3><p>A record of who changed what, and when.</p></div>
-              <span class="comp__cost">30 credits</span>
-            </li>
-            <li class="comp" data-cat="Trust">
-              <div><h3>Privacy export and delete</h3><p>Give people their data, or erase it.</p></div>
-              <span class="comp__cost">45 credits</span>
-            </li>
-            <li class="comp" data-cat="Trust">
-              <div><h3>Error alerts</h3><p>Know when something breaks in your live app.</p></div>
-              <span class="comp__cost">20 credits</span>
-            </li>
-            <li class="comp" data-cat="Trust">
-              <div><h3>Background jobs</h3><p>Slow work that runs without making people wait.</p></div>
-              <span class="comp__cost">35 credits</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="library__panel" id="tab-modules" role="tabpanel" aria-labelledby="t-modules" hidden>
-          <ul class="mod-grid">
-            <li class="mod">
-              <h3>Admin dashboard</h3>
-              <p>A finished back office: navigation, lists, and the numbers that matter.</p>
-              <span class="comp__cost">35 credits</span>
-            </li>
-            <li class="mod">
-              <h3>Review and approval</h3>
-              <p>Send items to a person to approve, reject or send back, with a full history.</p>
-              <span class="comp__cost">40 credits</span>
-            </li>
-            <li class="mod">
-              <h3>Sign-in screens</h3>
-              <p>Sign up, sign in and forgot-password pages that work with a keyboard and screen readers.</p>
-              <span class="comp__cost">25 credits</span>
-            </li>
-          </ul>
-          <div class="soon">
-            <h3>Coming next</h3>
-            <p>Not built yet. These are the modules we are working on, in roughly this order.</p>
-            <ul class="chips">
-              <li>Booking calendar</li><li>Invite teammates</li><li>Notifications</li><li>Discount codes</li><li>Two-step sign-in</li><li>Comments</li>
-            </ul>
+    <!-- Comparison -->
+    <section class="compare" id="compare">
+      <div class="wrap">
+        <h2 class="h2 reveal">When the AI gets it wrong, you don't pay again</h2>
+        <p class="sub reveal">Most AI app builders sell credits and charge for every attempt, including the ones that fail. Anycreo works the other way round.</p>
+        <div class="table reveal" role="table" aria-label="Anycreo compared with credit-based AI app builders">
+          <div class="table__row table__row--head" role="row">
+            <span role="columnheader"></span>
+            <span role="columnheader">Most AI app builders</span>
+            <span role="columnheader" class="us">Anycreo</span>
+          </div>
+          <div class="table__row" role="row">
+            <span role="rowheader">Paying for AI</span>
+            <span role="cell">Credits on top of your plan</span>
+            <span role="cell" class="us"><i class="ph ph-check" aria-hidden="true"></i> Uses the AI plan you already have</span>
+          </div>
+          <div class="table__row" role="row">
+            <span role="rowheader">A fix that doesn't work</span>
+            <span role="cell">Costs more credits</span>
+            <span role="cell" class="us"><i class="ph ph-check" aria-hidden="true"></i> Nothing extra from us</span>
+          </div>
+          <div class="table__row" role="row">
+            <span role="rowheader">Sign-in and payments</span>
+            <span role="cell">Written by the AI each time</span>
+            <span role="cell" class="us"><i class="ph ph-check" aria-hidden="true"></i> Ready-made parts, already tested</span>
+          </div>
+          <div class="table__row" role="row">
+            <span role="rowheader">Before launch</span>
+            <span role="cell">Up to you to spot problems</span>
+            <span role="cell" class="us"><i class="ph ph-check" aria-hidden="true"></i> Checked, with a plain-words report</span>
+          </div>
+          <div class="table__row" role="row">
+            <span role="rowheader">Where your app lives</span>
+            <span role="cell">On their platform</span>
+            <span role="cell" class="us"><i class="ph ph-check" aria-hidden="true"></i> A folder on your PC that you own</span>
           </div>
         </div>
+        <p class="fine reveal">Your AI plan has its own usage limits. Long sessions can reach them, and they reset on your provider's schedule.</p>
+      </div>
+    </section>
 
-        <div class="base reveal">
-          <h3>Included with every paid plan, no credits needed</h3>
-          <p>The database, the design system and its ten looks, sortable tables, friendly empty screens, and the five starter screens every app begins with.</p>
+    <!-- Launch check -->
+    <section class="ready-sec">
+      <div class="wrap ready-grid">
+        <div class="reveal">
+          <h2 class="h2">Know it's ready before your customers see it</h2>
+          <p class="sub">Anycreo checks your app the way a careful engineer would, then tells you in plain words what it found and what it fixed. Included on every plan.</p>
         </div>
+        <div class="report reveal" aria-label="Example launch report">
+          <div class="report__head">
+            <span><i class="ph ph-clipboard-text" aria-hidden="true"></i> Launch check</span>
+            <span class="report__app">Sunrise Dental</span>
+          </div>
+          <ul>
+            <li class="ok"><i class="ph ph-check-circle" aria-hidden="true"></i> Only signed-in staff can see patient details</li>
+            <li class="fixed"><i class="ph ph-wrench" aria-hidden="true"></i><span>One page showed other patients' bookings.<em>Fixed: each patient now sees only their own.</em></span></li>
+            <li class="ok"><i class="ph ph-check-circle" aria-hidden="true"></i> Payments tested from start to finish</li>
+            <li class="ok"><i class="ph ph-check-circle" aria-hidden="true"></i> Daily backups switched on</li>
+          </ul>
+          <p class="report__verdict"><i class="ph ph-seal-check" aria-hidden="true"></i> Ready to launch</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ready-made parts -->
+    <section class="parts" id="parts">
+      <div class="wrap">
+        <h2 class="h2 reveal">The risky parts come ready-made</h2>
+        <p class="sub reveal">Sign-in, payments and uploads are where home-made apps leak data. Anycreo adds tested versions instead of asking the AI to invent them.</p>
+        <div class="parts__grid">
+          <div class="part reveal"><i class="ph ph-lock-key" aria-hidden="true"></i><h3>Let people sign in</h3><p>Accounts, password reset, roles.</p></div>
+          <div class="part reveal"><i class="ph ph-credit-card" aria-hidden="true"></i><h3>Take card payments</h3><p>Deposits, subscriptions, invoices.</p></div>
+          <div class="part reveal"><i class="ph ph-users-three" aria-hidden="true"></i><h3>Keep customers separate</h3><p>Each one sees only their own data.</p></div>
+          <div class="part reveal"><i class="ph ph-upload-simple" aria-hidden="true"></i><h3>Upload files</h3><p>Private by default.</p></div>
+          <div class="part reveal"><i class="ph ph-envelope-simple" aria-hidden="true"></i><h3>Send emails</h3><p>Receipts, reminders, invites.</p></div>
+          <div class="part reveal"><i class="ph ph-file-pdf" aria-hidden="true"></i><h3>Make PDFs</h3><p>Quotes, invoices, certificates.</p></div>
+        </div>
+
+        <details class="all-parts reveal">
+          <summary>See all 14 parts and 3 modules, with prices</summary>
+          <div class="all-parts__body">
+            <p class="all-parts__note">You add parts with credits, and they stay in your app. One credit is one dollar, and every paid plan gives you its full price back as credits.</p>
+            <div class="all-parts__cols">
+              <div>
+                <h3>Parts</h3>
+                <ul class="price-list">
+                  <li><span>Sign-in and accounts</span><b>40</b></li>
+                  <li><span>Password reset</span><b>25</b></li>
+                  <li><span>Roles and permissions</span><b>35</b></li>
+                  <li><span>Teams and organisations</span><b>50</b></li>
+                  <li><span>Card payments and subscriptions</span><b>60</b></li>
+                  <li><span>Emails</span><b>25</b></li>
+                  <li><span>File uploads</span><b>30</b></li>
+                  <li><span>Spreadsheet import</span><b>25</b></li>
+                  <li><span>PDF creation</span><b>25</b></li>
+                  <li><span>Read text from documents</span><b>30</b></li>
+                  <li><span>Activity log</span><b>30</b></li>
+                  <li><span>Privacy export and delete</span><b>45</b></li>
+                  <li><span>Error alerts</span><b>20</b></li>
+                  <li><span>Background tasks</span><b>35</b></li>
+                </ul>
+              </div>
+              <div>
+                <h3>Modules <span class="muted">(whole features)</span></h3>
+                <ul class="price-list">
+                  <li><span>Admin dashboard</span><b>35</b></li>
+                  <li><span>Review and approval</span><b>40</b></li>
+                  <li><span>Sign-in screens</span><b>25</b></li>
+                </ul>
+                <h3>Free on every paid plan</h3>
+                <p class="muted">Database, ten looks, tables, empty-screen messages and the five starter screens.</p>
+                <h3>Coming next</h3>
+                <p class="muted">Booking calendar, invite teammates, notifications, discount codes, two-step sign-in, comments. Not built yet.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Founder note -->
+    <section class="founder">
+      <div class="wrap founder__inner reveal">
+        <p class="founder__quote">“I kept meeting people with a clear idea for an app and no way to build it, paying again and again for AI that broke what it had just fixed. Anycreo is the tool I wanted to hand them: honest about what's happening, safe by default, and theirs to keep.”</p>
+        <p class="founder__by"><span class="av av--lg" aria-hidden="true">S</span><span><strong>Sujith</strong> Founder, Anycreo</span></p>
       </div>
     </section>
 
@@ -416,117 +350,131 @@
     <section class="pricing" id="pricing">
       <div class="wrap">
         <div class="pricing__head reveal">
-          <h2 class="h2">Try it free. Every dollar you pay comes back as credits.</h2>
+          <div>
+            <h2 class="h2">Simple pricing. Your money comes back as credits</h2>
+            <p class="sub">Every paid plan returns its full price as credits for ready-made parts. You also need a ChatGPT, Claude or Google AI plan, usually about $20 a month, paid to them.</p>
+          </div>
           <div class="toggle" role="radiogroup" aria-label="Billing period">
-            <button role="radio" aria-checked="true" data-period="year">Yearly <span class="save">2 months free</span></button>
-            <button role="radio" aria-checked="false" data-period="month">Monthly</button>
+            <button type="button" role="radio" aria-checked="true" data-period="year">Yearly <span class="save">2 months free</span></button>
+            <button type="button" role="radio" aria-checked="false" data-period="month">Monthly</button>
           </div>
         </div>
 
         <div class="plans">
           <article class="plan reveal">
             <h3>Free</h3>
-            <p class="plan__for">For trying Anycreo on your idea.</p>
-            <p class="price"><span class="amt">$0</span><span class="per">forever</span></p>
+            <p class="plan__for">Try it on your own idea.</p>
+            <p class="price"><span class="amt">$0</span></p>
             <p class="price__alt">No card needed</p>
             <a class="btn btn--ghost btn--block" href="#download">Download free</a>
             <ul class="plan__list">
-              <li>The Anycreo editor, with limited use</li>
-              <li>Uses your own Claude, ChatGPT or Google plan</li>
-              <li class="plan__no">Ready-made components not included</li>
-              <li>The launch-readiness check</li>
+              <li>The Anycreo app, with limited use</li>
+              <li>See your app running on your PC</li>
+              <li>The launch check</li>
+              <li class="no">Ready-made parts not included</li>
             </ul>
           </article>
 
           <article class="plan reveal">
             <h3>Starter</h3>
-            <p class="plan__for">For showing your app to a few people.</p>
+            <p class="plan__for">Show your app to a few people.</p>
             <p class="price" data-month="$10" data-year="$99"><span class="amt">$99</span><span class="per">/ year</span></p>
             <p class="price__alt" data-swap data-month="or $99 a year" data-year="or $10 a month">or $10 a month</p>
-            <a class="btn btn--ghost btn--block" href="mailto:hello@anycreo.com?subject=Anycreo%20Starter%20early%20access">Get early access</a>
+            <a class="btn btn--ghost btn--block" href="mailto:hello@anycreo.com?subject=Anycreo%20Starter">Join the waitlist</a>
             <ul class="plan__list">
-              <li>Everything in Free, with no usage limit</li>
-              <li data-swap data-month="$10 in component credits every month" data-year="$99 in component credits for the year"><strong>$99 in component credits</strong> for the year</li>
+              <li class="credit" data-swap data-month="$10 in credits every month" data-year="$99 in credits for the year">$99 in credits for the year</li>
+              <li>No usage limit</li>
               <li>1 app online with a private link</li>
-              <li>Sleeps when nobody is using it</li>
-              <li>Email support</li>
+              <li>Wakes in a few seconds after a quiet spell</li>
             </ul>
           </article>
 
           <article class="plan plan--pick reveal">
             <p class="plan__badge">Most popular</p>
             <h3>Builder</h3>
-            <p class="plan__for">For an app real people use every day.</p>
+            <p class="plan__for">An app real customers use every day.</p>
             <p class="price" data-month="$25" data-year="$250"><span class="amt">$250</span><span class="per">/ year</span></p>
             <p class="price__alt" data-swap data-month="or $250 a year" data-year="or $25 a month">or $25 a month</p>
-            <a class="btn btn--primary btn--block" href="mailto:hello@anycreo.com?subject=Anycreo%20Builder%20early%20access">Get early access</a>
+            <a class="btn btn--primary btn--block" href="mailto:hello@anycreo.com?subject=Anycreo%20Builder">Join the waitlist</a>
             <ul class="plan__list">
-              <li>Everything in Starter</li>
-              <li data-swap data-month="$25 in component credits every month" data-year="$250 in component credits for the year"><strong>$250 in component credits</strong> for the year</li>
+              <li class="credit" data-swap data-month="$25 in credits every month" data-year="$250 in credits for the year">$250 in credits for the year</li>
               <li>1 app always online</li>
               <li>Your own web address</li>
-              <li><strong>Free domain included</strong> when you pay yearly</li>
+              <li><strong>Free domain</strong> when you pay yearly</li>
               <li>Database with daily backups</li>
-              <li>Errors from your live app shown back in Anycreo</li>
+              <li>Errors from your live app shown in Anycreo</li>
             </ul>
           </article>
 
           <article class="plan reveal">
             <h3>Pro</h3>
-            <p class="plan__for">For running a small business on it.</p>
+            <p class="plan__for">Run a small business on it.</p>
             <p class="price" data-month="$50" data-year="$500"><span class="amt">$500</span><span class="per">/ year</span></p>
             <p class="price__alt" data-swap data-month="or $500 a year" data-year="or $50 a month">or $50 a month</p>
-            <a class="btn btn--ghost btn--block" href="mailto:hello@anycreo.com?subject=Anycreo%20Pro%20early%20access">Get early access</a>
+            <a class="btn btn--ghost btn--block" href="mailto:hello@anycreo.com?subject=Anycreo%20Pro">Join the waitlist</a>
             <ul class="plan__list">
+              <li class="credit" data-swap data-month="$50 in credits every month" data-year="$500 in credits for the year">$500 in credits for the year</li>
               <li>Everything in Builder</li>
-              <li data-swap data-month="$50 in component credits every month" data-year="$500 in component credits for the year"><strong>$500 in component credits</strong> for the year</li>
               <li>Up to 3 apps online</li>
-              <li><strong>Free domain included</strong> when you pay yearly</li>
-              <li>Security review and report before launch</li>
+              <li><strong>Free domain</strong> when you pay yearly</li>
+              <li>Security review before launch</li>
               <li>Priority support</li>
             </ul>
           </article>
         </div>
-        <p class="pricing__note reveal">Prices in US dollars. Cancel any time and keep your app: the code is yours.</p>
+        <p class="fine reveal">Paid plans open soon. Prices in US dollars. Cancel any time: your app stays on your PC and the code is yours.</p>
+      </div>
+    </section>
+
+    <!-- Trust -->
+    <section class="trust">
+      <div class="wrap trust__grid">
+        <h2 class="h2 reveal">Safe for your PC and your data</h2>
+        <div class="trust__items">
+          <div class="reveal"><i class="ph ph-folder-simple-lock" aria-hidden="true"></i><h3>Your app is a normal folder</h3><p>It lives on your PC. Copy it, back it up, or take it elsewhere.</p></div>
+          <div class="reveal"><i class="ph ph-eye-slash" aria-hidden="true"></i><h3>We don't see your ideas</h3><p>Your conversation goes only to the AI company whose plan you use.</p></div>
+          <div class="reveal"><i class="ph ph-key" aria-hidden="true"></i><h3>We never touch your AI login</h3><p>You sign in with ChatGPT, Claude or Google directly. We never hold your password.</p></div>
+          <div class="reveal"><i class="ph ph-hand-palm" aria-hidden="true"></i><h3>It asks before anything risky</h3><p>Deleting things, spending money or sharing your code always needs your yes.</p></div>
+        </div>
       </div>
     </section>
 
     <!-- FAQ -->
     <section class="faq" id="faq">
       <div class="wrap faq__grid">
-        <h2 class="h2 reveal">Questions people ask first.</h2>
+        <h2 class="h2 reveal">Questions people ask first</h2>
         <div class="faq__list">
           <details class="reveal">
             <summary>Do I need to know how to code?</summary>
-            <p>No. You describe what you want in everyday words. Anycreo never shows you a terminal and never asks you to make a technical decision you can't judge.</p>
+            <p>No. You describe what you want in everyday words. Anycreo never shows you code or a terminal unless you ask to see it.</p>
           </details>
           <details class="reveal">
-            <summary>What do I need before I start?</summary>
-            <p>A Windows computer and a paid plan with Claude, ChatGPT or Google's AI. Anycreo installs everything else and walks you through signing in.</p>
+            <summary>What will it cost me in total?</summary>
+            <p>Anycreo is free to start. You also need a paid plan with ChatGPT, Claude or Google's AI, usually about $20 a month, paid to them. Paid Anycreo plans start at $10 a month and come back to you as credits for ready-made parts.</p>
           </details>
           <details class="reveal">
-            <summary>What are component credits?</summary>
-            <p>Components are the ready-made parts of an app: sign-in, payments, file uploads and more. You add them with credits. One credit is worth one dollar. On every paid plan, each dollar you pay comes back as a dollar of credits, so the plan pays for itself in parts you would otherwise have to build.</p>
+            <summary>What are credits?</summary>
+            <p>Credits pay for ready-made parts like sign-in or card payments. One credit is one dollar. Whatever you pay for your plan comes back as the same amount in credits, and the parts you add stay in your app.</p>
           </details>
           <details class="reveal">
             <summary>What can I do on the free plan?</summary>
-            <p>Try Anycreo on your own idea with limited use. The free plan does not include the ready-made components. Upgrade when you want to keep building, and your payment comes back as credits.</p>
-          </details>
-          <details class="reveal">
-            <summary>Who can see my idea?</summary>
-            <p>You and the AI company whose plan you use. Your project sits in a folder on your own computer. Anycreo does not collect your ideas or your files.</p>
+            <p>Try Anycreo on your own idea with limited use and see it running on your PC. Ready-made parts like sign-in and payments come with paid plans.</p>
           </details>
           <details class="reveal">
             <summary>Do I need to buy a domain?</summary>
-            <p>No. On a yearly Builder or Pro plan we include one domain of your choice (like yourcafe.com) at no extra cost. Already have one? Connect it instead. Monthly plans can connect a domain you already own.</p>
+            <p>No. On a yearly Builder or Pro plan we include one domain of your choice, like yourcafe.com. Already have one? Connect it instead.</p>
+          </details>
+          <details class="reveal">
+            <summary>Windows says it protected my PC. Is that normal?</summary>
+            <p>Yes, for new apps. Windows warns about programs it hasn't seen many people download yet. Click "More info", then "Run anyway". Anycreo installs only into your user folder and can be removed from Settings like any app.</p>
           </details>
           <details class="reveal">
             <summary>Is there a Mac version?</summary>
-            <p>Windows is available now. Mac is next.</p>
+            <p>Windows is available now. Mac is next. Email <a href="mailto:hello@anycreo.com?subject=Tell%20me%20when%20Mac%20is%20ready">hello@anycreo.com</a> and we'll tell you when it's ready.</p>
           </details>
           <details class="reveal">
             <summary>What happens if I cancel?</summary>
-            <p>Your app stays on your computer and keeps working there. Only the online hosting stops at the end of the period you paid for.</p>
+            <p>Your app stays on your PC and keeps working there. Online hosting stops at the end of the period you paid for, and you can download your data first.</p>
           </details>
         </div>
       </div>
@@ -534,25 +482,43 @@
 
     <!-- Download -->
     <section class="download" id="download">
-      <div class="wrap download__inner reveal">
-        <h2 class="display display--sm">Your idea is enough to start.</h2>
-        <p class="lede">Free to download. Set up in about five minutes.</p>
-        <div class="hero__ctas">
-          <a class="btn btn--primary" href="https://github.com/achurisujith-droid/shipyard-downloads/releases/latest" rel="noopener">Download for Windows</a>
+      <div class="wrap">
+        <div class="download__card reveal">
+          <h2 class="display display--sm">Your idea is enough to start</h2>
+          <p class="lede">Free to download. Set up in about five minutes, and it walks you through every step.</p>
+          <a class="btn btn--primary btn--lg" href="https://github.com/achurisujith-droid/shipyard-downloads/releases/latest" rel="noopener"><i class="ph ph-windows-logo" aria-hidden="true"></i> Download free for Windows</a>
+          <ul class="download__facts">
+            <li>Windows 10 or 11</li>
+            <li>153 MB</li>
+            <li>Version 0.1.3</li>
+          </ul>
         </div>
-        <p class="download__note">Windows 10 or 11. Mac coming next.</p>
       </div>
     </section>
   </main>
 
   <footer class="foot">
-    <div class="wrap foot__inner">
-      <a class="brand" href="#top" aria-label="Anycreo home">
-        <img src="favicon.svg" alt="" width="24" height="24">
-        <span>Anycreo</span>
-      </a>
-      <p>Anyone can create.</p>
-      <p class="foot__meta">&copy; <span id="year">2026</span> Anycreo. <a href="mailto:hello@anycreo.com">hello@anycreo.com</a></p>
+    <div class="wrap foot__grid">
+      <div class="foot__brand">
+        <a class="brand" href="#top" aria-label="Anycreo home"><img src="favicon.svg" alt="" width="28" height="28"><span>Anycreo</span></a>
+        <p>Anyone can create.</p>
+      </div>
+      <nav aria-label="Product">
+        <h3>Product</h3>
+        <a href="#how">How it works</a>
+        <a href="#examples">Examples</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#download">Download</a>
+      </nav>
+      <nav aria-label="Help">
+        <h3>Help</h3>
+        <a href="#faq">Questions</a>
+        <a href="#parts">Ready-made parts</a>
+        <a href="mailto:hello@anycreo.com">hello@anycreo.com</a>
+      </nav>
+    </div>
+    <div class="wrap foot__base">
+      <p>&copy; <span id="year">2026</span> Anycreo</p>
     </div>
   </footer>
 </body>

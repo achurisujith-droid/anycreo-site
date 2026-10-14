@@ -1,32 +1,42 @@
-// Anycreo site: hero preview, billing toggle, scroll reveal. No dependencies.
+// Anycreo site: hero build sequence, mobile menu, billing toggle, scroll reveal. No dependencies.
 (() => {
   document.documentElement.classList.add('js');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Hero preview: walks through the app's four real steps.
-  const scenes = [...document.querySelectorAll('.scene')];
-  const tabs = [...document.querySelectorAll('.window__steps button')];
-  let current = 0;
-  let timer = null;
+  // Hero: ask -> build -> done -> published, then loop.
+  const stage = document.querySelector('.stage');
+  if (stage) {
+    if (reduce) {
+      stage.dataset.step = '3';
+    } else {
+      const durations = [1800, 2600, 2400, 3600];
+      let step = 0;
+      let timer = null;
+      const tick = () => {
+        stage.dataset.step = String(step);
+        timer = setTimeout(() => { step = (step + 1) % durations.length; tick(); }, durations[step]);
+      };
+      const io = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !timer) tick();
+        if (!e.isIntersecting && timer) { clearTimeout(timer); timer = null; }
+      }, { threshold: 0.25 });
+      stage.dataset.step = '0';
+      io.observe(stage);
+    }
+  }
 
-  const show = (i) => {
-    current = (i + scenes.length) % scenes.length;
-    scenes.forEach((s, n) => s.classList.toggle('is-active', n === current));
-    tabs.forEach((t, n) => t.setAttribute('aria-selected', String(n === current)));
-  };
-  const stop = () => { clearInterval(timer); timer = null; };
-  const play = () => {
-    if (reduce || timer) return;
-    timer = setInterval(() => show(current + 1), 3800);
-  };
-
-  tabs.forEach((t) => t.addEventListener('click', () => { stop(); show(Number(t.dataset.go)); }));
-
-  const preview = document.querySelector('.preview');
-  if (preview && 'IntersectionObserver' in window) {
-    new IntersectionObserver(([e]) => (e.isIntersecting ? play() : stop()), { threshold: 0.3 }).observe(preview);
-  } else {
-    play();
+  // Mobile menu.
+  const toggle = document.querySelector('.nav__toggle');
+  const menu = document.getElementById('menu');
+  if (toggle && menu) {
+    const set = (open) => {
+      menu.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    toggle.addEventListener('click', () => set(!menu.classList.contains('is-open')));
+    menu.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
   }
 
   // Billing toggle.
@@ -41,30 +51,9 @@
       void amt.offsetWidth;
       amt.classList.add('is-swapping');
     });
-    document.querySelectorAll('[data-swap]').forEach((el) => {
-      const [amount, ...rest] = el.dataset[period].split(' in ');
-      el.innerHTML = el.classList.contains('price__alt') ? el.dataset[period]
-        : `<strong>${amount} in ${rest.join(' in ').replace(/ (every month|for the year)$/, '')}</strong> ${el.dataset[period].match(/(every month|for the year)$/)[0]}`;
-    });
+    document.querySelectorAll('[data-swap]').forEach((el) => { el.textContent = el.dataset[period]; });
   };
   periodButtons.forEach((b) => b.addEventListener('click', () => setPeriod(b.dataset.period)));
-
-  // Components and modules: tabs + category filter.
-  const libTabs = [...document.querySelectorAll('.library__tabs [role="tab"]')];
-  libTabs.forEach((tab) => tab.addEventListener('click', () => {
-    libTabs.forEach((t) => {
-      const on = t === tab;
-      t.setAttribute('aria-selected', String(on));
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    });
-  }));
-  const filters = [...document.querySelectorAll('.filters button')];
-  filters.forEach((f) => f.addEventListener('click', () => {
-    filters.forEach((b) => b.setAttribute('aria-pressed', String(b === f)));
-    document.querySelectorAll('.comp').forEach((c) => {
-      c.hidden = f.dataset.filter !== 'All' && c.dataset.cat !== f.dataset.filter;
-    });
-  }));
 
   // Scroll reveal.
   const items = document.querySelectorAll('.reveal');
@@ -79,7 +68,7 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
     items.forEach((el, i) => {
-      el.style.transitionDelay = `${(i % 4) * 70}ms`;
+      el.style.transitionDelay = `${(i % 3) * 70}ms`;
       io.observe(el);
     });
   }
